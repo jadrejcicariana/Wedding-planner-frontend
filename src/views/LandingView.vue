@@ -10,6 +10,10 @@
         <div class ="title">
           <p class ="title1">NO STRESS</p>
           <p class ="title2">Pick your wedding dress</p>
+          <div class = "buttons">
+            <main-button :buttonText="'Login'"> </main-button>
+            <main-button :buttonText="'Sign up'"> </main-button>
+          </div>
         </div>
       </div>
     </body>
@@ -17,12 +21,12 @@
 </template>
 
 <script>
-
+import MainButton from '../components/MainButton.vue';
 
 export default {
   name: 'LandingView',
   components: {
-    
+    MainButton
   },
 };
 
@@ -35,7 +39,10 @@ header {
 }
 
 body {
-  position: relative;
+  position: absolute;
+  top: 300;
+  width: 100%;
+  height: 100%;
 }
 
 .landing-background {
@@ -66,4 +73,5 @@ body {
   font-size: 48px;
   color: #FB6F92;
 }
+
 </style>
