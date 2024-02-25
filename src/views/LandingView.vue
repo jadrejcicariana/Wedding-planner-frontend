@@ -11,7 +11,7 @@
           <p class ="title1">NO STRESS</p>
           <p class ="title2">Pick your wedding dress</p>
           <div class = "buttons">
-            <main-button :buttonText="'LOGIN'"> </main-button>
+            <main-button :buttonText="'LOGIN'" @click="$router.push('Login')" > </main-button>
             <main-button :buttonText="'SIGN UP'"> </main-button>
           </div>
         </div>
