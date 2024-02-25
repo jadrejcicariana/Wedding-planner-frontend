@@ -11,8 +11,8 @@
           <p class ="title1">NO STRESS</p>
           <p class ="title2">Pick your wedding dress</p>
           <div class = "buttons">
-            <main-button :buttonText="'Login'"> </main-button>
-            <main-button :buttonText="'Sign up'"> </main-button>
+            <main-button :buttonText="'LOGIN'"> </main-button>
+            <main-button :buttonText="'SIGN UP'"> </main-button>
           </div>
         </div>
       </div>
@@ -48,12 +48,13 @@ body {
 .landing-background {
   position: absolute;
   top: 300;
-  left: 0;
+  left: 50;
   width: 100%;
   height: 100%;
   background-image: url("@/assets/hearts.png");
   background-color: #FFE5EC;
   background-size: cover;
+  background-position: center;
 }
 
 .title {
@@ -62,7 +63,7 @@ body {
   left: 50%;
   transform: translate(-50%, -50%); 
   text-align: center;
-  color: black; 
+  color: black;
 }
 
 .title1 {

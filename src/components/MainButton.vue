@@ -20,9 +20,12 @@ export default {
 
 Button {
     position: relative;
-    width: 100px;
-    height: 50px;
-    color: rgb(255, 0, 0);
+    width: 140px;
+    height: 40px;
+    color: black;
+    background-color: #FB6F92;
+    margin: 10px;
+    border-radius: 16px;
 }
 
 </style>
