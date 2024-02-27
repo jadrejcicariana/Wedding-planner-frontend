@@ -4,6 +4,9 @@
   </header>
   <body>
     <div class= "login-background">
+      <div class = "login-form">
+          <main-button :buttonText="'LOGIN'" @click="$router.push('Myplan')" > </main-button>
+      </div>
       <div class= "text">
         <p class= "text1">
           Don't have an account?
@@ -18,11 +21,13 @@
 
 <script>
 import MainHeader from '@/components/MainHeader.vue'
+import MainButton from '@/components/MainButton.vue'
 
 export default {
   name: 'LoginView',
   components: {
-    MainHeader
+    MainHeader,
+    MainButton
   },
 }
 

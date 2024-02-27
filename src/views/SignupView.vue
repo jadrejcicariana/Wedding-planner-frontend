@@ -4,25 +4,31 @@
   </header>
   <body>
     <div class= "signup-background">
-      <div class= "text">
-        <p class= "text1">
-          Already have an account?
-        </p>
-        <p class = "text2" @click = "$router.push('Login')">
-          Login
-        </p>
-      </div>
+        <div class = "signup-form">
+            <main-button :buttonText="'SIGN UP'" @click="$router.push('Myplan')" > </main-button>
+        </div>
+        <div class= "text">
+            <p class= "text1">
+                Already have an account?
+            </p>
+            <p class = "text2" @click = "$router.push('Login')">
+                Login
+            </p>
+        </div>
     </div>
   </body>
 </template>
 
 <script>
 import MainHeader from '@/components/MainHeader.vue'
+import MainButton from '@/components/MainButton.vue'
+
 
 export default {
   name: 'SignupView',
   components: {
-    MainHeader
+    MainHeader,
+    MainButton
   },
 }
 
