@@ -24,7 +24,7 @@
           </p>
           <p class ="result"> Total 2900
           </p>
-          <main-button :buttonText="'Edit'" @click="$router.push('')" > </main-button>
+          <main-button :buttonText="'Edit'" @click="$router.push('Expenses')" > </main-button>
         </div>
         <div class ="guests">
           <p class ="title"> Guests
