@@ -3,6 +3,7 @@ import LandingView from '../views/LandingView.vue'
 import LoginView from '../views/LoginView.vue'
 import SignupView from '../views/SignupView.vue'
 import MyplanView from '../views/MyplanView.vue'
+import DetailsView from '../views/DetailsView.vue'
 
 const routes = [
   {
@@ -28,14 +29,12 @@ const routes = [
     name: 'myplan',
     component: MyplanView
   },
-/*   {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import('../views/AboutView.vue')
-  } */
+
+  {
+    path: '/details',
+    name: 'details',
+    component: DetailsView
+  },
 ]
 
 const router = createRouter({

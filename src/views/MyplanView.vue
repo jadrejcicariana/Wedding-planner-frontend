@@ -13,7 +13,7 @@
           </p>
           <p class ="location"> St. John Church, Washington DC
           </p>
-          <main-button :buttonText="'Edit'" @click="$router.push('')" > </main-button>
+          <main-button :buttonText="'Edit'" @click="$router.push('Details')" > </main-button>
         </div>
         <div class ="expenses">
           <p class ="title"> Expenses
