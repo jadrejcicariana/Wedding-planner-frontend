@@ -5,7 +5,7 @@
     <body>
         <div class ="expenses">            
             <div class ="expenselist">
-                <expense></expense><br>
+                <expense v-for="expense in expenses" :key="expense.title"></expense><br>
                 <add-button></add-button>
             </div>
             <main-button :buttonText="'Save'" @click="$router.push('Myplan')" > </main-button>
@@ -19,7 +19,9 @@ import MainHeader from '@/components/MainHeader.vue'
 import MainButton from '@/components/MainButton.vue'
 import Expense from '@/components/Expense.vue'
 import AddButton from '@/components/AddButton.vue'
+import store from '@/store.js'
 
+let expenses = [store.expenses];
 
 export default {
     name: 'DetailsView',
@@ -27,8 +29,14 @@ export default {
         MainHeader,
         MainButton,
         AddButton,
-        Expense
+        Expense,
   },
+    data() {
+        return {
+            store,
+            expenses,
+        }
+    }
 }
 
 </script>

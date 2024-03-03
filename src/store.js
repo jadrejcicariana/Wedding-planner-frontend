@@ -1,7 +1,15 @@
-export default {
-    gname: '',
-    bname: '',
-    date: '',
-    time: '',
-    location: '',
+export default { 
+    details: {
+        gname: '',
+        bname: '',
+        date: '',
+        time: '',
+        location: '',
+    },
+    expenses: [
+        {
+            title: '',
+            price: '',
+        }
+    ]
 };
