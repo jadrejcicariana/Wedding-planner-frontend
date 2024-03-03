@@ -6,15 +6,15 @@
         <div class ="details">
             <form>
                 <label for="gname">Groom name:</label><br>
-                <input type="text" id="gname" name="gname"><br>
+                <input type="text" id="gname" name="gname" v-model ="store.gname"><br>
                 <label for="bname">Bride name:</label><br>
-                <input type="text" id="bname" name="bname"><br>
+                <input type="text" id="bname" name="bname" v-model ="store.bname"><br>
                 <label for="date">Date:</label><br>
-                <input type="date" id="date" name="date"><br>
+                <input type="date" id="date" name="date" v-model ="store.date"><br>
                 <label for="time">Time:</label><br>
-                <input type="time" id="time" name="time"><br>
+                <input type="time" id="time" name="time" v-model ="store.time"><br>
                 <label for="location">Location:</label><br>
-                <input type="text" id="location" name="location"><br>
+                <input type="text" id="location" name="location" v-model ="store.location"><br>
             </form>
             <main-button :buttonText="'Save'" @click="$router.push('Myplan')" > </main-button>
         </div>
@@ -22,15 +22,22 @@
 </template>
 
 <script>
+import store from '@/store.js'
 import MainHeader from '@/components/MainHeader.vue'
 import MainButton from '@/components/MainButton.vue'
 
 export default {
+
     name: 'DetailsView',
     components: {
         MainHeader,
         MainButton
   },
+    data() {
+        return {
+            store,
+        }
+    }
 }
 </script>
 

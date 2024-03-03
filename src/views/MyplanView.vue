@@ -7,11 +7,11 @@
         <div class="details">
           <p class ="title"> Details
           </p>
-          <p class ="names"> Mr. John Doe & Mrs. Jane Doe
+          <p class ="names"> Mr. {{store.gname}} & Mrs. {{store.bname}}
           </p>
-          <p class ="datetime"> DD/MM/YYYY HH:MM
+          <p class ="datetime"> {{store.date}} {{store.time}}
           </p>
-          <p class ="location"> St. John Church, Washington DC
+          <p class ="location"> {{store.location}}
           </p>
           <main-button :buttonText="'Edit'" @click="$router.push('Details')" > </main-button>
         </div>
@@ -42,6 +42,7 @@
 </template>
 
 <script>
+import store from '@/store.js'
 import MainHeader from '@/components/MainHeader.vue'
 import MainButton from '@/components/MainButton.vue'
 
@@ -51,6 +52,11 @@ export default {
     MainHeader,
     MainButton
   },
+  data () {
+    return {
+      store,
+    }
+  }
 }
 
 </script>
