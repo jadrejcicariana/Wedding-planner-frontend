@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: 'MainButton',
+  name: 'AddButton',
   methods: {
     onClick() {
         this.$emit('click');

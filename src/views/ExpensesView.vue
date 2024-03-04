@@ -5,8 +5,31 @@
     <body>
         <div class ="expenses">            
             <div class ="expenselist">
-                <expense v-for="expense in expenses" :key="expense.title"></expense><br>
-                <add-button></add-button>
+                <form v-on:submit.prevent="addNewExpense">
+                    <label for="new-title">Title: </label>
+                    <input
+                        v-model="store.newExpenseTitle"
+                        id="new-title"
+                        placeholder="E.g. Wedding dress"
+                    />
+                    <label for="new-price">Price: </label>
+                    <input
+                        v-model="store.newExpensePrice"
+                        id="new-price"
+                        placeholder="E.g. 300"
+                    />
+                    <add-button type="submit">submit</add-button>
+                </form>
+                
+                <ul>
+                    <expense 
+                    v-for="expense in store.expenses"
+                    :key="expense.id"
+                    :title="expense.title"
+                    :price="expense.price"
+                    > 
+                    </expense>
+                </ul>
             </div>
             <main-button :buttonText="'Save'" @click="$router.push('Myplan')" > </main-button>
         </div>
@@ -15,13 +38,12 @@
 
 <script>
 
+
 import MainHeader from '@/components/MainHeader.vue'
 import MainButton from '@/components/MainButton.vue'
 import Expense from '@/components/Expense.vue'
 import AddButton from '@/components/AddButton.vue'
 import store from '@/store.js'
-
-let expenses = [store.expenses];
 
 export default {
     name: 'DetailsView',
@@ -30,14 +52,28 @@ export default {
         MainButton,
         AddButton,
         Expense,
-  },
+    },
+    methods: {
+         addNewExpense() {
+            let newExpense = {
+                id: this.store.nextExpenseId,
+                title: this.store.newExpenseTitle,
+                price: this.store.newExpensePrice
+            }
+            this.store.expenses.push(newExpense)
+            this.store.newExpenseTitle = ''
+            this.store.newExpensePrice = ''
+            this.store.nextExpenseId++
+        }
+    },
     data() {
         return {
             store,
-            expenses,
+             
         }
     }
 }
+
 
 </script>
 
