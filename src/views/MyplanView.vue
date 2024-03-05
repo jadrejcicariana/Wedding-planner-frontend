@@ -18,11 +18,11 @@
         <div class ="expenses">
           <p class ="title"> Expenses
           </p>
-          <p class ="subtitle1"> Paid 1300
+          <p class ="subtitle1"> Paid: {{store.resultPaid}}
           </p>
-          <p class ="subtitle2"> Unpaid 1600
+          <p class ="subtitle2"> Unpaid: {{store.resultUnpaid}}
           </p>
-          <p class ="result"> Total 2900
+          <p class ="result"> Total: {{store.resultTotal}}
           </p>
           <main-button :buttonText="'Edit'" @click="$router.push('Expenses')" > </main-button>
         </div>

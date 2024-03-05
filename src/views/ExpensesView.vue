@@ -14,9 +14,10 @@
                     />
                     <label for="new-price">Price: </label>
                     <input
-                        v-model="store.newExpensePrice"
+                        v-model.number="store.newExpensePrice"
                         id="new-price"
                         placeholder="E.g. 300"
+                        
                     />
                     <add-button type="submit">submit</add-button>
                 </form>
@@ -27,12 +28,16 @@
                     :key="expense.id"
                     :title="expense.title"
                     :price="expense.price"
+                    :checkboxIndex="index"
+                    :checkboxPrice="expense.price"
+  
                     v-on:delete="deleteExpense(index)"
                     >
                     </expense>
                 </ul>
+                {{store.checkedExpenses}}
             </div>
-            <main-button :buttonText="'Save'" @click="$router.push('Myplan')" > </main-button>
+            <main-button :buttonText="'Save'" @click="$router.push('Myplan'), calculatePaid(), calculateTotal(), calculateUnpaid()" > </main-button>
         </div>
     </body>
 </template>
@@ -69,7 +74,18 @@ export default {
         deleteExpense(index) {
             console.log(index),
             this.store.expenses.splice(index, 1)
+            this.store.checkedExpenses.splice(index, 1)
+        },
+        calculatePaid(){           
+            this.store.resultPaid= this.store.checkedExpenses.reduce((total, expense) => total + expense.checkboxPrice, 0)           
+        },
+        calculateTotal(){        
+            this.store.resultTotal= this.store.expenses.reduce((total, expense) => total + expense.price, 0)          
+        },
+        calculateUnpaid(){            
+            this.store.resultUnpaid = this.store.resultTotal - this.store.resultPaid            
         }
+
     },
     data() {
         return {

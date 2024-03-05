@@ -4,6 +4,9 @@ export default {
     nextExpenseId: 4,
     newGuestName: '',
     nextGuestId: 4,
+    resultTotal: 0,
+    resultPaid: 0,
+    resultUnpaid: 0,
     details: {
         gname: '',
         bname: '',
@@ -13,20 +16,26 @@ export default {
     },
     expenses: [
         {
-            id: '1',
+            id: 1,
             title: 'test1',
-            price: '123',
+            price: 1,
+            
         },
         {
-            id: '2',
+            id: 2,
             title: 'test2',
-            price: '123',
+            price: 2,
+            
         },
         {
-            id: '3',
+            id: 3,
             title: 'test3',
-            price: '123',
+            price: 3,
+            
         },
+    ],
+    checkedExpenses: [
+
     ],
     guests: [
         {

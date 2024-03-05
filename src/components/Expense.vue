@@ -2,8 +2,8 @@
     <li>
         {{ title }}, {{ price }}
 
-        <!-- <input type="checkbox" id="checkbox"/>
-        <label for="checkbox">Paid</label> -->
+        <input type="checkbox" id="checkbox" :value="{checkboxIndex, checkboxPrice}" v-model="store.checkedExpenses"/>
+        <label for="checkbox">Paid</label>
         
         <delete-button @delete="this.$emit('delete')"></delete-button>
         
@@ -12,6 +12,7 @@
 
 <script>
 import DeleteButton from './DeleteButton.vue'
+import store from '@/store.js'
 
 export default {
     name: 'Expense',
@@ -20,12 +21,25 @@ export default {
             type: String
         },
         price: {
-            type: String
+            type: Number
+        },
+        checkboxIndex: {
+            type: Number
+        },
+        checkboxPrice: {
+            type: Number
         }
+        
     },
     methods: {
        
        
+    },
+    data() {
+        return {
+            store,
+             
+        }
     },
     components: {
         DeleteButton
