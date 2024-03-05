@@ -2,6 +2,8 @@ export default {
     newExpenseTitle: '',
     newExpensePrice: '',
     nextExpenseId: 4,
+    newGuestName: '',
+    nextGuestId: 4,
     details: {
         gname: '',
         bname: '',
@@ -24,6 +26,20 @@ export default {
             id: '3',
             title: 'test3',
             price: '123',
+        },
+    ],
+    guests: [
+        {
+            id: '1',
+            name: 'test1',
+        },
+        {
+            id: '2',
+            name: 'test2',
+        },
+        {
+            id: '3',
+            name: 'test3',
         },
     ]
 };

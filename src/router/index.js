@@ -5,6 +5,7 @@ import SignupView from '../views/SignupView.vue'
 import MyplanView from '../views/MyplanView.vue'
 import DetailsView from '../views/DetailsView.vue'
 import ExpensesView from '../views/ExpensesView.vue'
+import GuestsView from '../views/GuestsView.vue'
 
 const routes = [
   {
@@ -41,6 +42,12 @@ const routes = [
     path: '/expenses',
     name: 'expenses',
     component: ExpensesView
+  },
+
+  {
+    path: '/guests',
+    name: 'guests',
+    component: GuestsView
   },
 ]
 

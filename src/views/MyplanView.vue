@@ -35,7 +35,7 @@
           </p>
           <p class ="result"> Confirmed 97
           </p>
-          <main-button :buttonText="'Edit'" @click="$router.push('')" > </main-button>
+          <main-button :buttonText="'Edit'" @click="$router.push('Guests')" > </main-button>
         </div>
        </div>
     </body>
