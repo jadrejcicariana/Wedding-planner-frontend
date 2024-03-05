@@ -1,7 +1,12 @@
 <template>
     <li>
-        {{ title }}, {{ price }} 
-        <delete-button></delete-button>
+        {{ title }}, {{ price }}
+
+        <!-- <input type="checkbox" id="checkbox"/>
+        <label for="checkbox">Paid</label> -->
+        
+        <delete-button @delete="this.$emit('delete')"></delete-button>
+        
     </li>
 </template>
 
@@ -19,6 +24,7 @@ export default {
         }
     },
     methods: {
+       
        
     },
     components: {

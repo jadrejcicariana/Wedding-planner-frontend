@@ -9,7 +9,7 @@ export default {
   name: 'DeleteButton',
   methods: {
     onClick() {
-        this.$emit('click');
+        this.$emit('delete');
     }
   }
 }

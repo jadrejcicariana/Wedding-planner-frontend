@@ -27,8 +27,8 @@
                     :key="expense.id"
                     :title="expense.title"
                     :price="expense.price"
-                    @click="deleteExpense(index)"
-                    > 
+                    v-on:delete="deleteExpense(index)"
+                    >
                     </expense>
                 </ul>
             </div>
