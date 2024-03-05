@@ -17,9 +17,10 @@
                 
                 <ul>
                     <guest 
-                    v-for="guest in store.guests"
+                    v-for="(guest, index) in store.guests"
                     :key="guest.id"
                     :name="guest.name"
+                    v-on:delete="deleteGuest(index)"
                     > 
                     </guest>
                 </ul>
@@ -55,6 +56,10 @@ export default {
             this.store.guests.push(newGuest)
             this.store.newGuestName = ''
             this.store.nextGuestId++
+        },
+        deleteGuest(index) {
+            console.log(index),
+            this.store.guests.splice(index, 1)
         }
     },
     data() {
