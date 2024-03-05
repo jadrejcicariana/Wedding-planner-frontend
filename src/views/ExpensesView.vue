@@ -23,10 +23,11 @@
                 
                 <ul>
                     <expense 
-                    v-for="expense in store.expenses"
+                    v-for="(expense, index) in store.expenses"
                     :key="expense.id"
                     :title="expense.title"
                     :price="expense.price"
+                    @click="deleteExpense(index)"
                     > 
                     </expense>
                 </ul>
@@ -64,6 +65,10 @@ export default {
             this.store.newExpenseTitle = ''
             this.store.newExpensePrice = ''
             this.store.nextExpenseId++
+        },
+        deleteExpense(index) {
+            console.log(index),
+            this.store.expenses.splice(index, 1)
         }
     },
     data() {

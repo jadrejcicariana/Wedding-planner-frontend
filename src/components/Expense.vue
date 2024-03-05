@@ -1,10 +1,12 @@
 <template>
     <li>
-        {{ title }}, {{ price }}
+        {{ title }}, {{ price }} 
+        <delete-button></delete-button>
     </li>
 </template>
 
 <script>
+import DeleteButton from './DeleteButton.vue'
 
 export default {
     name: 'Expense',
@@ -18,6 +20,9 @@ export default {
     },
     methods: {
        
+    },
+    components: {
+        DeleteButton
     }
 }
 
