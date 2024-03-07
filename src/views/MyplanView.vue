@@ -29,11 +29,11 @@
         <div class ="guests">
           <p class ="title"> Guests
           </p>
-          <p class ="subtitle1"> Not attending 12
+          <p class ="subtitle1"> Declined: {{store.resultDeclined}}
           </p>
-          <p class ="subtitle2"> Awaiting response 18
+          <p class ="subtitle2"> Awaiting response: {{store.resultAwaiting}}
           </p>
-          <p class ="result"> Confirmed 97
+          <p class ="result"> Confirmed: {{store.resultConfirmed}}
           </p>
           <main-button :buttonText="'Edit'" @click="$router.push('Guests')" > </main-button>
         </div>

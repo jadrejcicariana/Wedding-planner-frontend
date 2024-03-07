@@ -35,7 +35,6 @@
                     >
                     </expense>
                 </ul>
-                {{store.checkedExpenses}}
             </div>
             <main-button :buttonText="'Save'" @click="$router.push('Myplan'), calculatePaid(), calculateTotal(), calculateUnpaid()" > </main-button>
         </div>
@@ -85,7 +84,7 @@ export default {
         calculateUnpaid(){            
             this.store.resultUnpaid = this.store.resultTotal - this.store.resultPaid            
         }
-
+        // PROBLEM ON DELETION
     },
     data() {
         return {

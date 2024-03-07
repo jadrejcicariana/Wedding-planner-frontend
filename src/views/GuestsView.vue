@@ -20,12 +20,22 @@
                     v-for="(guest, index) in store.guests"
                     :key="guest.id"
                     :name="guest.name"
+                    :checkboxIndex="index"
+                    :checkboxName="guest.name"
+
+
                     v-on:delete="deleteGuest(index)"
                     > 
                     </guest>
                 </ul>
+                <!-- conf: {{store.confirmedGuests}}<br>
+                decl: {{store.declinedGuests}}<br>
+                total: {{store.resultTotalGuests}}<br>
+                conf: {{store.resultConfirmed}}<br>
+                decl: {{store.resultDeclined}}<br>
+                awa: {{store.resultAwaiting}} -->
             </div>
-            <main-button :buttonText="'Save'" @click="$router.push('Myplan')" > </main-button>
+            <main-button :buttonText="'Save'" @click="$router.push('Myplan'), calculateConfirmed(), calculateDeclined(), calculateTotal(), calculateAwaiting()" > </main-button>
         </div>
     </body>
 </template>
@@ -60,7 +70,23 @@ export default {
         deleteGuest(index) {
             console.log(index),
             this.store.guests.splice(index, 1)
+            this.store.confirmedGuests.splice(index,1)
+            this.store.declinedGuests.splice(index,1)
+        },
+        calculateConfirmed(){           
+            this.store.resultConfirmed= this.store.confirmedGuests.length          
+        },
+        calculateTotal(){        
+            this.store.resultTotalGuests= this.store.guests.length         
+        },
+        calculateDeclined(){            
+            this.store.resultDeclined = this.store.declinedGuests.length           
+        },
+        calculateAwaiting(){
+            this.store.resultAwaiting = this.store.resultTotalGuests - this.store.resultConfirmed - this.store.resultDeclined
+
         }
+        // PROBLEM ON DELETION
     },
     data() {
         return {

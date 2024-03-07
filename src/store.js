@@ -7,6 +7,11 @@ export default {
     resultTotal: 0,
     resultPaid: 0,
     resultUnpaid: 0,
+    resultConfirmed: 0,
+    resultTotalGuests: 0,
+    resultDeclined: 0,
+    resultAwaiting: 0,
+
     details: {
         gname: '',
         bname: '',
@@ -50,5 +55,12 @@ export default {
             id: '3',
             name: 'test3',
         },
+    ],
+    confirmedGuests: [
+
+
+    ],
+    declinedGuests: [
+
     ]
 };
