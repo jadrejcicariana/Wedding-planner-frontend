@@ -1,6 +1,7 @@
 <template>
+<div>
     <li>
-        {{ name }}
+        <div class="name">{{ name }}</div>
 
         <input type="checkbox" id="checkbox" :value="{checkboxIndex, checkboxName}" v-model="store.confirmedGuests"/>
         <label for="checkbox">Confirmed</label>
@@ -10,6 +11,7 @@
 
         <delete-button @delete="this.$emit('delete')"></delete-button>
     </li>
+</div>
 </template>
 
 <script>
@@ -48,6 +50,16 @@ export default {
 
 </script>
 
-<style>
+<style scoped>
+
+input {
+    margin-left: 20px;
+}
+
+.name {
+    display: inline;
+    margin-right: 100px;
+    
+}
 
 </style>

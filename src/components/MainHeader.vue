@@ -1,8 +1,10 @@
 <template>
     <header>
-        <p class="title">
+      <div class="title">
+        <p>
             {{headerText}} 
         </p>
+      </div>        
     </header>
 </template>
 
@@ -26,12 +28,14 @@ export default {
 
 header {
   background-color: #FFC2D1;
-  height: 100px;
+  height: 80px;
 }
 
 .title {
     font-size: 36px;
     color: #FB6F92;
+    padding-top: 10px;
+    font-family: cursive;  
 }
 
 

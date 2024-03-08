@@ -53,6 +53,11 @@ export default {
 
 .text2 {
   color: #FB6F92;
+  font-weight: bold;
+}
+
+.text2:hover {
+  cursor: pointer
 }
 
 </style>

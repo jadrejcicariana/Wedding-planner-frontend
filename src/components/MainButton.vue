@@ -1,7 +1,9 @@
 <template>
+<div class="mainbutton">
     <button @click = "onClick">
         {{buttonText}}
     </button>
+</div>
 </template>
 
 <script>
@@ -31,6 +33,11 @@ Button {
     background-color: #FB6F92;
     margin: 10px;
     border-radius: 16px;
+    font-weight: bold;
+}
+
+.mainbutton {
+  display: inline;
 }
 
 </style>

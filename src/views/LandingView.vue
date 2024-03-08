@@ -1,9 +1,7 @@
 <template>
   <div class="landing">
-    <header>
-      <div class="logo">
-        <img src="@/assets/weddingplannertext.png" alt="Logo">
-      </div>
+    <header>      
+      <img class="logo" src="@/assets/weddingplannertext.png" alt="Logo">      
     </header>
     <body>
       <div class ="landing-background">
@@ -36,6 +34,12 @@ export default {
 
 header {
   background-color: #FFC2D1;
+  height: 80px;
+}
+
+.logo {
+  height: 70px;
+  margin-top: 5px;
 }
 
 body {
@@ -73,6 +77,7 @@ body {
 .title2 {
   font-size: 48px;
   color: #FB6F92;
+  font-family: cursive;
 }
 
 </style>

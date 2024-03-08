@@ -99,4 +99,16 @@ export default {
 
 <style scoped>
 
+label {
+    font-weight: bold;
+    margin-left: 16px;
+}
+
+input {
+    background-color: #FFC2D1;
+    margin-bottom: 16px;
+    border-radius: 16px;
+
+}
+
 </style>

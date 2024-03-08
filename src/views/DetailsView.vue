@@ -6,15 +6,15 @@
         <div class ="details">
             <form>
                 <label for="gname">Groom name:</label><br>
-                <input type="text" id="gname" name="gname" v-model ="store.gname"><br>
+                <input type="text" id="gname" name="gname" v-model ="store.details.gname"><br>
                 <label for="bname">Bride name:</label><br>
-                <input type="text" id="bname" name="bname" v-model ="store.bname"><br>
+                <input type="text" id="bname" name="bname" v-model ="store.details.bname"><br>
                 <label for="date">Date:</label><br>
-                <input type="date" id="date" name="date" v-model ="store.date"><br>
+                <input type="date" id="date" name="date" v-model ="store.details.date"><br>
                 <label for="time">Time:</label><br>
-                <input type="time" id="time" name="time" v-model ="store.time"><br>
+                <input type="time" id="time" name="time" v-model ="store.details.time"><br>
                 <label for="location">Location:</label><br>
-                <input type="text" id="location" name="location" v-model ="store.location"><br>
+                <input type="text" id="location" name="location" v-model ="store.details.location"><br>
             </form>
             <main-button :buttonText="'Save'" @click="$router.push('Myplan')" > </main-button>
         </div>

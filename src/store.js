@@ -13,11 +13,11 @@ export default {
     resultAwaiting: 0,
 
     details: {
-        gname: '',
-        bname: '',
-        date: '',
-        time: '',
-        location: '',
+        gname: 'John',
+        bname: 'Jane',
+        date: '2024-03-22',
+        time: '12:30',
+        location: 'St. John Church',
     },
     expenses: [
         {

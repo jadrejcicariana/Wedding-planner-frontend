@@ -5,13 +5,14 @@
     <body>
        <div class="myplan-background">
         <div class="details">
-          <p class ="title"> Details
+          <p class ="title"> Details</p>
+          <p class ="char"> Mr. </p>
+          <p class ="name"> {{store.details.gname}} </p>
+          <p class ="char"> & Mrs. </p> 
+          <p class="name"> {{store.details.bname}} </p>
+          <p class ="datetime"> {{store.details.date}} {{store.details.time}}
           </p>
-          <p class ="names"> Mr. {{store.gname}} & Mrs. {{store.bname}}
-          </p>
-          <p class ="datetime"> {{store.date}} {{store.time}}
-          </p>
-          <p class ="location"> {{store.location}}
+          <p class ="location"> {{store.details.location}}
           </p>
           <main-button :buttonText="'Edit'" @click="$router.push('Details')" > </main-button>
         </div>
@@ -73,13 +74,15 @@ export default {
   background-color: #FFE5EC;
   background-size: cover;
   background-position: center;
+  font-weight: bold;
 }
 
 .details {
   margin: auto;
-  margin-top: 10px;
+  margin-top: 16px;
   width: 50%;
   background-color: #FFC2D1;
+  border-radius: 16px;
 }
 
 .expenses {
@@ -87,6 +90,7 @@ export default {
   margin-top: 10px;
   width: 50%;
   background-color: #FFC2D1;
+  border-radius: 16px;
 }
 
 .guests {
@@ -94,14 +98,28 @@ export default {
   margin-top: 10px;
   width: 50%;
   background-color: #FFC2D1;
+  border-radius: 16px;
 }
 
 .title {
+  padding-top: 16px;
+  padding-left: 16px;
   text-align: left;
-  margin: 10px;
   color: #FB6F92;
   font-weight: bold;
 }
 
+.char, .name {
+  display: inline;
+}
+
+.name {
+  font-family: cursive;
+  font-size: 36px;
+}
+
+.result {
+  font-size: 24px
+}
 
 </style>
