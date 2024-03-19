@@ -5,7 +5,15 @@
   <body>
     <div class= "signup-background">
         <div class = "signup-form">
-            <main-button :buttonText="'SIGN UP'" @click="$router.push('Myplan')" > </main-button>
+          <form>
+              <label for="username">Username:</label><br>
+              <input type="text" id="username" name="username"><br>
+              <label for="password">Password:</label><br>
+              <input type="password" id="password" name="password"><br>
+              <label for="rptpassword">Repeat password:</label><br>
+              <input type="password" id="rptpassword" name="rptpassword"><br>
+          </form>
+          <main-button :buttonText="'SIGN UP'" @click="$router.push('Myplan')" > </main-button>
         </div>
         <div class= "text">
             <p class= "text1">
@@ -58,6 +66,22 @@ export default {
 
 .text2:hover {
   cursor: pointer
+}
+
+.signup-form {
+    margin-top: 16px;
+}
+
+label {
+    font-weight: bold;
+    text-align: left;
+}
+
+input {
+    background-color: #FFC2D1;
+    margin-bottom: 16px;
+    border-radius: 16px;
+
 }
 
 </style>
