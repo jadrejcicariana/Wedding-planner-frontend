@@ -5,19 +5,20 @@
   <body>
     <div class= "login-background">
       <div class = "login-form">
-        <form>
+        <form v-on:submit.prevent="login">
             <label for="username">Username:</label><br>
-            <input type="text" id="username" name="username"><br>
+            <input type="text" id="username" name="username" v-model="username"><br>
             <label for="password">Password:</label><br>
-            <input type="password" id="password" name="password"><br>
+            <input type="password" id="password" name="password" v-model="password"><br>
+            <main-button type="submit" :buttonText="'LOGIN'"> </main-button>
         </form>
-        <main-button :buttonText="'LOGIN'" @click="$router.push('Myplan')" > </main-button>
+        
       </div>
       <div class= "text">
         <p class= "text1">
           Don't have an account?
         </p>
-        <p class = "text2" @click = "$router.push('Signup')">
+        <p class = "text2" @click = "$router.push('signup')">
           Sign up
         </p>
       </div>
@@ -28,6 +29,7 @@
 <script>
 import MainHeader from '@/components/MainHeader.vue'
 import MainButton from '@/components/MainButton.vue'
+import { Auth } from "@/services"
 
 export default {
   name: 'LoginView',
@@ -35,6 +37,22 @@ export default {
     MainHeader,
     MainButton
   },
+  data() {
+    return {
+      username: '',
+      password: ''
+    }
+  },
+  methods: {
+    async login() {
+      let success = await Auth.login(this.username, this.password)
+      console.log("Login result", success)
+
+      if (success = true) {
+        this.$router.push('myplan')
+      }
+    }
+  }
 }
 
 </script>

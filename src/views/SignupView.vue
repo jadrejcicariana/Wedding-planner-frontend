@@ -13,13 +13,13 @@
               <label for="rptpassword">Repeat password:</label><br>
               <input type="password" id="rptpassword" name="rptpassword"><br>
           </form>
-          <main-button :buttonText="'SIGN UP'" @click="$router.push('Myplan')" > </main-button>
+          <main-button :buttonText="'SIGN UP'" @click="$router.push('myplan')" > </main-button>
         </div>
         <div class= "text">
             <p class= "text1">
                 Already have an account?
             </p>
-            <p class = "text2" @click = "$router.push('Login')">
+            <p class = "text2" @click = "$router.push('login')">
                 Login
             </p>
         </div>
