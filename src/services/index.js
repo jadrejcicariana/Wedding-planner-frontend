@@ -25,6 +25,18 @@ let Auth = {
 
     getUser() {
         return JSON.parse(localStorage.getItem("user"))
+    },
+    authenticated () {
+        let user = Auth.getUser()
+        if (user && user.token) {
+            return true
+        }
+        return false
+    },
+    state: {
+        get authenticated(){
+            return Auth.authenticated()
+        }
     }
 }
 
