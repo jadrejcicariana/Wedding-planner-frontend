@@ -51,7 +51,7 @@ export default {
       if (success = true) {
         this.$router.push('myplan')
       }
-    }
+    },
   }
 }
 

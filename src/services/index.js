@@ -6,6 +6,17 @@ let Service = axios.create({
 })
 
 let Auth = {
+    async register(username, password) {
+        let response = await Service.post('/users', {
+            username: username,
+            password: password
+        })
+        console.log("registered: ", response.data)
+
+        return true
+    },
+
+
     async login(username, password){
         let response = await Service.post('/auth', {
             username: username,

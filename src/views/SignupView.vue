@@ -5,15 +5,16 @@
   <body>
     <div class= "signup-background">
         <div class = "signup-form">
-          <form>
+          <form v-on:submit.prevent="register">
               <label for="username">Username:</label><br>
-              <input type="text" id="username" name="username"><br>
+              <input type="text" id="username" name="username" v-model="username"><br>
               <label for="password">Password:</label><br>
-              <input type="password" id="password" name="password"><br>
+              <input type="password" id="password" name="password" v-model="password"><br>
               <label for="rptpassword">Repeat password:</label><br>
               <input type="password" id="rptpassword" name="rptpassword"><br>
+              <main-button type="submit" :buttonText="'SIGN UP'"> </main-button>
           </form>
-          <main-button :buttonText="'SIGN UP'" @click="$router.push('myplan')" > </main-button>
+          
         </div>
         <div class= "text">
             <p class= "text1">
@@ -30,6 +31,7 @@
 <script>
 import MainHeader from '@/components/MainHeader.vue'
 import MainButton from '@/components/MainButton.vue'
+import { Auth } from "@/services"
 
 
 export default {
@@ -38,6 +40,23 @@ export default {
     MainHeader,
     MainButton
   },
+  data() {
+    return {
+      username: '',
+      password: ''
+    }
+  },
+  methods: {
+    async register() {
+      let success = await Auth.register(this.username, this.password)
+      console.log("Register result", success)
+
+      if (success = true) {
+        await Auth.login(this.username, this.password)
+        this.$router.push('myplan')
+      }
+    },
+  }
 }
 
 </script>
