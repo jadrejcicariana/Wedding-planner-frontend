@@ -7,12 +7,12 @@
         <div class="details">
           <p class ="title"> Details</p>
           <p class ="char"> Mr. </p>
-          <p class ="name"> {{store.details.gname}} </p>
+          <p class ="name"> {{details.gname}} </p>
           <p class ="char"> & Mrs. </p> 
-          <p class="name"> {{store.details.bname}} </p>
-          <p class ="datetime"> {{store.details.date}} {{store.details.time}}
+          <p class="name"> {{details.bname}} </p>
+          <p class ="datetime"> {{details.date}} {{details.time}}
           </p>
-          <p class ="location"> {{store.details.location}}
+          <p class ="location"> {{details.location}}
           </p>
           <main-button :buttonText="'Edit'" @click="$router.push('Details')" > </main-button>
         </div>
@@ -46,17 +46,24 @@
 import store from '@/store.js'
 import MainHeader from '@/components/MainHeader.vue'
 import MainButton from '@/components/MainButton.vue'
+import { Details } from "@/services"
 
 export default {
   name: 'MyplanView',
+  data () {
+    return {
+      store,
+      details: {}
+    }
+  },
+  async mounted() {
+    this.details = await Details.fetchDetails()
+  },
   components: {
     MainHeader,
     MainButton
   },
-  data () {
-    return {
-      store,
-    }
+  methods: {
   }
 }
 

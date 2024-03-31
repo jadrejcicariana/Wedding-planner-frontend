@@ -51,5 +51,21 @@ let Auth = {
     }
 }
 
+let Details = {
+    async fetchDetails() {
+        let user = Auth.getUser()
 
-export { Service, Auth }
+        let response = await Service.get(`/${user.username}`)
+        let doc = response.data
+        console.log(doc)
+        return {
+            gname: doc.details.gname,
+            bname: doc.details.bname,
+            date: doc.details.date,
+            time: doc.details.time,
+            location: doc.details.location
+        }        
+    }
+}
+
+export { Service, Auth, Details }
