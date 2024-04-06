@@ -63,7 +63,14 @@ let Details = {
             bname: doc.details.bname,
             date: doc.details.date,
             time: doc.details.time,
-            location: doc.details.location
+            location: doc.details.location,
+            expensestotal: doc.results.expensestotal,
+            expensespaid: doc.results.expensespaid,
+            expensesunpaid: doc.results.expensesunpaid,
+            gueststotal: doc.results.gueststotal,
+            guestsconfirmed: doc.results.guestsconfirmed,
+            guestsdeclined: doc.results.guestsdeclined,
+            guestsawaiting: doc.results.guestsawaiting
         }        
     }
 }

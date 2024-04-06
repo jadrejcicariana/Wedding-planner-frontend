@@ -19,22 +19,22 @@
         <div class ="expenses">
           <p class ="title"> Expenses
           </p>
-          <p class ="subtitle1"> Paid: {{store.resultPaid}}
+          <p class ="subtitle1"> Paid: {{details.expensespaid}}
           </p>
-          <p class ="subtitle2"> Unpaid: {{store.resultUnpaid}}
+          <p class ="subtitle2"> Unpaid: {{details.expensesunpaid}}
           </p>
-          <p class ="result"> Total: {{store.resultTotal}}
+          <p class ="result"> Total: {{details.expensestotal}}
           </p>
           <main-button :buttonText="'Edit'" @click="$router.push('Expenses')" > </main-button>
         </div>
         <div class ="guests">
           <p class ="title"> Guests
           </p>
-          <p class ="subtitle1"> Declined: {{store.resultDeclined}}
+          <p class ="subtitle1"> Declined: {{details.guestsdeclined}}
           </p>
-          <p class ="subtitle2"> Awaiting response: {{store.resultAwaiting}}
+          <p class ="subtitle2"> Awaiting response: {{details.guestsawaiting}}
           </p>
-          <p class ="result"> Confirmed: {{store.resultConfirmed}}
+          <p class ="result"> Confirmed: {{details.guestsconfirmed}}
           </p>
           <main-button :buttonText="'Edit'" @click="$router.push('Guests')" > </main-button>
         </div>
