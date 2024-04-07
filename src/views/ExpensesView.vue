@@ -24,15 +24,19 @@
                 
                 <ul>
                     <expense 
-                    v-for="(expense, index) in store.expenses"
-                    :key="expense.id"
+                    v-for="expense in expenses"
+
+                    
+                    :key="expense.title"
                     :title="expense.title"
                     :price="expense.price"
-                    :checkboxIndex="index"
-                    :checkboxPrice="expense.price"
-  
-                    v-on:delete="deleteExpense(index)"
                     >
+                    
+                    <!-- :checkboxIndex="index" -->
+                    <!-- :checkboxPrice="expense.price" -->
+<!--   
+                    v-on:delete="deleteExpense(index)" -->
+                    
                     </expense>
                 </ul>
             </div>
@@ -59,10 +63,15 @@ export default {
         AddButton,
         Expense,
     },
+    async mounted() {
+        this.expenses = await Expenses.fetchExpenses()
+        console.log(this.expenses)
+    },
     methods: {
         async addNewExpense() {
             await Expenses.addExpense(this.expense)
             this.expense = {}
+            this.expenses = await Expenses.fetchExpenses()
 
             // let newExpense = {
             //     id: this.store.nextExpenseId,
@@ -93,7 +102,8 @@ export default {
     data() {
         return {
             store,
-            expense: {}
+            expense: {},
+            expenses: []
              
         }
     }

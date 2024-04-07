@@ -102,6 +102,24 @@ let Expenses = {
             price: expense.price
         })
         console.log("added: ", response.data)
+    },
+
+    async fetchExpenses() {
+        let user = Auth.getUser()
+
+        let response = await Service.get(`/${user.username}/expenses`)
+        let doc = response.data
+        console.log(doc)
+
+        let data = doc.map(element => {
+            return {
+                title: element.data.title,
+                price: element.data.price
+            }
+        })
+        console.log(data)
+        return data
+     
     }
 }
 

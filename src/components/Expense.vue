@@ -3,9 +3,9 @@
     <li>
         {{ title }}, {{ price }}
 
-        <input type="checkbox" id="checkbox" :value="{checkboxIndex, checkboxPrice}" v-model="store.checkedExpenses"/>
+        <!-- <input type="checkbox" id="checkbox" :value="{checkboxIndex, checkboxPrice}" v-model="store.checkedExpenses"/>
         <label for="checkbox">Paid</label>
-        
+         -->
         <delete-button class="deletebutton" @delete="this.$emit('delete')"></delete-button>
         
     </li>
@@ -25,12 +25,12 @@ export default {
         price: {
             type: Number
         },
-        checkboxIndex: {
-            type: Number
-        },
-        checkboxPrice: {
-            type: Number
-        }
+        // checkboxIndex: {
+        //     type: Number
+        // },
+        // checkboxPrice: {
+        //     type: Number
+        // }
         
     },
     methods: {
