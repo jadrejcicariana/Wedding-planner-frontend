@@ -93,4 +93,16 @@ let Details = {
     }
 }
 
-export { Service, Auth, Details }
+let Expenses = {
+    async addExpense(expense) {
+        let user = Auth.getUser()
+
+        let response = await Service.patch(`/${user.username}/expenses`, {
+            title: expense.title,
+            price: expense.price
+        })
+        console.log("added: ", response.data)
+    }
+}
+
+export { Service, Auth, Details, Expenses }

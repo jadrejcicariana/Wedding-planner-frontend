@@ -8,13 +8,13 @@
                 <form v-on:submit.prevent="addNewExpense">
                     <label for="new-title">Title: </label>
                     <input
-                        v-model="store.newExpenseTitle"
+                        v-model="expense.title"
                         id="new-title"
                         placeholder="E.g. Wedding dress"
                     />
                     <label for="new-price">Price: </label>
                     <input
-                        v-model.number="store.newExpensePrice"
+                        v-model.number="expense.price"
                         id="new-price"
                         placeholder="E.g. 300"
                         
@@ -49,6 +49,7 @@ import MainButton from '@/components/MainButton.vue'
 import Expense from '@/components/Expense.vue'
 import AddButton from '@/components/AddButton.vue'
 import store from '@/store.js'
+import { Expenses } from "@/services"
 
 export default {
     name: 'DetailsView',
@@ -59,16 +60,19 @@ export default {
         Expense,
     },
     methods: {
-         addNewExpense() {
-            let newExpense = {
-                id: this.store.nextExpenseId,
-                title: this.store.newExpenseTitle,
-                price: this.store.newExpensePrice
-            }
-            this.store.expenses.push(newExpense)
-            this.store.newExpenseTitle = ''
-            this.store.newExpensePrice = ''
-            this.store.nextExpenseId++
+        async addNewExpense() {
+            await Expenses.addExpense(this.expense)
+            this.expense = {}
+
+            // let newExpense = {
+            //     id: this.store.nextExpenseId,
+            //     title: this.store.newExpenseTitle,
+            //     price: this.store.newExpensePrice
+            // }
+            // this.store.expenses.push(newExpense)
+            // this.store.newExpenseTitle = ''
+            // this.store.newExpensePrice = ''
+            // this.store.nextExpenseId++
         },
         deleteExpense(index) {
             console.log(index),
@@ -89,6 +93,7 @@ export default {
     data() {
         return {
             store,
+            expense: {}
              
         }
     }
