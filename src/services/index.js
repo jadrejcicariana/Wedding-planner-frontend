@@ -72,6 +72,24 @@ let Details = {
             guestsdeclined: doc.results.guestsdeclined,
             guestsawaiting: doc.results.guestsawaiting
         }        
+    },
+    async updateDetails(details) {
+        let user = Auth.getUser()
+
+        let response = await Service.patch(`/${user.username}`, {
+            details: {
+                gname: details.gname,
+                bname: details.bname,
+                date: details.date,
+                time: details.time,
+                location: details.location
+            }
+        })
+        console.log("updated: ", response.data)
+
+        return true
+        
+
     }
 }
 

@@ -6,17 +6,17 @@
         <div class ="details">
             <form>
                 <label for="gname">Groom name:</label><br>
-                <input type="text" id="gname" name="gname" v-model ="store.details.gname"><br>
+                <input type="text" id="gname" name="gname" v-model ="details.gname"><br>
                 <label for="bname">Bride name:</label><br>
-                <input type="text" id="bname" name="bname" v-model ="store.details.bname"><br>
+                <input type="text" id="bname" name="bname" v-model ="details.bname"><br>
                 <label for="date">Date:</label><br>
-                <input type="date" id="date" name="date" v-model ="store.details.date"><br>
+                <input type="date" id="date" name="date" v-model ="details.date"><br>
                 <label for="time">Time:</label><br>
-                <input type="time" id="time" name="time" v-model ="store.details.time"><br>
+                <input type="time" id="time" name="time" v-model ="details.time"><br>
                 <label for="location">Location:</label><br>
-                <input type="text" id="location" name="location" v-model ="store.details.location"><br>
+                <input type="text" id="location" name="location" v-model ="details.location"><br>
             </form>
-            <main-button :buttonText="'Save'" @click="$router.push('Myplan')" > </main-button>
+            <main-button :buttonText="'Save'" @click="updateDetails()" > </main-button>
         </div>
     </body>
 </template>
@@ -25,6 +25,8 @@
 import store from '@/store.js'
 import MainHeader from '@/components/MainHeader.vue'
 import MainButton from '@/components/MainButton.vue'
+import { Details } from "@/services"
+import router from '@/router'
 
 export default {
 
@@ -32,12 +34,24 @@ export default {
     components: {
         MainHeader,
         MainButton
-  },
+    },
+    async mounted() {
+        this.details = await Details.fetchDetails()
+    },
     data() {
         return {
             store,
+            details: {}
+        }
+    },
+    methods: {
+        async updateDetails (){
+            await Details.updateDetails(this.details)
+            router.push('Myplan')
+
         }
     }
+
 }
 </script>
 
