@@ -123,4 +123,32 @@ let Expenses = {
     }
 }
 
-export { Service, Auth, Details, Expenses }
+let Guests = {
+    async addGuest(guest) {
+        let user = Auth.getUser()
+
+        let response = await Service.patch(`/${user.username}/guests`, {
+            name: guest.name
+        })
+        console.log("added: ", response.data)
+    },
+
+    async fetchGuests() {
+        let user = Auth.getUser()
+
+        let response = await Service.get(`/${user.username}/guests`)
+        let doc = response.data
+        console.log(doc)
+
+        let data = doc.map(element => {
+            return {
+                name: element.data.name
+            }
+        })
+        console.log(data)
+        return data
+     
+    }
+}
+
+export { Service, Auth, Details, Expenses, Guests }

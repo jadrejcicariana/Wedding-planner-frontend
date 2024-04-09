@@ -8,7 +8,7 @@
                 <form v-on:submit.prevent="addNewGuest">
                     <label for="new-name">Name: </label>
                     <input
-                        v-model="store.newGuestName"
+                        v-model="guest.name"
                         id="new-name"
                         placeholder="E.g. John Doe"
                     />
@@ -17,15 +17,17 @@
                 
                 <ul>
                     <guest 
-                    v-for="(guest, index) in store.guests"
-                    :key="guest.id"
+                    v-for="guest in guests"
+                    :key="guest.name"
                     :name="guest.name"
-                    :checkboxIndex="index"
+                    >
+                    
+                    <!-- :checkboxIndex="index"
                     :checkboxName="guest.name"
 
 
-                    v-on:delete="deleteGuest(index)"
-                    > 
+                    v-on:delete="deleteGuest(index)" -->
+                     
                     </guest>
                 </ul>
                 <!-- conf: {{store.confirmedGuests}}<br>
@@ -48,6 +50,7 @@ import MainButton from '@/components/MainButton.vue'
 import Guest from '@/components/Guest.vue'
 import AddButton from '@/components/AddButton.vue'
 import store from '@/store.js'
+import { Guests } from '@/services'
 
 export default {
     name: 'DetailsView',
@@ -57,15 +60,23 @@ export default {
         AddButton,
         Guest,
     },
+    async mounted() {
+        this.guests = await Guests.fetchGuests()
+        console.log(this.guests)
+    },
     methods: {
-         addNewGuest() {
-            let newGuest = {
-                id: this.store.nextGuestId,
-                name: this.store.newGuestName,
-            }
-            this.store.guests.push(newGuest)
-            this.store.newGuestName = ''
-            this.store.nextGuestId++
+        async addNewGuest() {
+            await Guests.addGuest(this.guest)
+            this.guest = {}
+            this.guests = await Guests.fetchGuests()
+
+            // let newGuest = {
+            //     id: this.store.nextGuestId,
+            //     name: this.store.newGuestName,
+            // }
+            // this.store.guests.push(newGuest)
+            // this.store.newGuestName = ''
+            // this.store.nextGuestId++
         },
         deleteGuest(index) {
             console.log(index),
@@ -91,6 +102,8 @@ export default {
     data() {
         return {
             store,
+            guest: {},
+            guests: []
              
         }
     }
