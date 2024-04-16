@@ -154,6 +154,12 @@ let Guests = {
         console.log(data)
         return data
      
+    },
+    async deleteGuest(name) {
+        let user = Auth.getUser()
+
+        let response = await Service.patch(`/${user.username}/guests/${name}`)
+        console.log("deleted: ", response.data)
     }
 }
 

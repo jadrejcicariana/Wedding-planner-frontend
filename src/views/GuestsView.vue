@@ -18,15 +18,14 @@
                 <ul>
                     <guest 
                     v-for="guest in guests"
+
                     :key="guest.name"
                     :name="guest.name"
-                    >
                     
+                    v-on:delete="deleteGuest(guest.name)" 
+                    >
                     <!-- :checkboxIndex="index"
-                    :checkboxName="guest.name"
-
-
-                    v-on:delete="deleteGuest(index)" -->
+                    :checkboxName="guest.name"-->
                      
                     </guest>
                 </ul>
@@ -78,11 +77,17 @@ export default {
             // this.store.newGuestName = ''
             // this.store.nextGuestId++
         },
-        deleteGuest(index) {
-            console.log(index),
-            this.store.guests.splice(index, 1)
-            this.store.confirmedGuests.splice(index,1)
-            this.store.declinedGuests.splice(index,1)
+        async deleteGuest(nameToDelete) {
+            this.nameToDelete = nameToDelete
+            await Guests.deleteGuest(nameToDelete)
+            this.nameToDelete = ""
+            this.guests = await Guests.fetchGuests()
+
+
+            // console.log(index),
+            // this.store.guests.splice(index, 1)
+            // this.store.confirmedGuests.splice(index,1)
+            // this.store.declinedGuests.splice(index,1)
         },
         calculateConfirmed(){           
             this.store.resultConfirmed= this.store.confirmedGuests.length          
@@ -103,7 +108,8 @@ export default {
         return {
             store,
             guest: {},
-            guests: []
+            guests: [],
+            nameToDelete: ""
              
         }
     }
