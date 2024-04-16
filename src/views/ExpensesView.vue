@@ -30,12 +30,13 @@
                     :key="expense.title"
                     :title="expense.title"
                     :price="expense.price"
+
+                    v-on:delete="deleteExpense(expense.title)"
                     >
-                    
                     <!-- :checkboxIndex="index" -->
                     <!-- :checkboxPrice="expense.price" -->
-<!--   
-                    v-on:delete="deleteExpense(index)" -->
+  
+                    
                     
                     </expense>
                 </ul>
@@ -83,10 +84,15 @@ export default {
             // this.store.newExpensePrice = ''
             // this.store.nextExpenseId++
         },
-        deleteExpense(index) {
-            console.log(index),
-            this.store.expenses.splice(index, 1)
-            this.store.checkedExpenses.splice(index, 1)
+        async deleteExpense(titleToDelete) {
+            this.titleToDelete = titleToDelete
+            await Expenses.deleteExpense(titleToDelete)
+            this.titleToDelete = ""
+            this.expenses = await Expenses.fetchExpenses()
+
+            // console.log(index),
+            // this.store.expenses.splice(index, 1)
+            // this.store.checkedExpenses.splice(index, 1)
         },
         calculatePaid(){           
             this.store.resultPaid= this.store.checkedExpenses.reduce((total, expense) => total + expense.checkboxPrice, 0)           
@@ -103,8 +109,8 @@ export default {
         return {
             store,
             expense: {},
-            expenses: []
-             
+            expenses: [],
+            titleToDelete: ""
         }
     }
 }

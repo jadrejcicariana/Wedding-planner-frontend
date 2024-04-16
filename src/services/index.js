@@ -120,6 +120,12 @@ let Expenses = {
         console.log(data)
         return data
      
+    },
+    async deleteExpense(title) {
+        let user = Auth.getUser()
+
+        let response = await Service.patch(`/${user.username}/expenses/${title}`)
+        console.log("deleted: ", response.data)
     }
 }
 
