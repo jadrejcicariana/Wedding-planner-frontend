@@ -24,8 +24,6 @@
                     
                     v-on:delete="deleteGuest(guest.name)" 
                     >
-                    <!-- :checkboxIndex="index"
-                    :checkboxName="guest.name"-->
                      
                     </guest>
                 </ul>
@@ -36,7 +34,7 @@
                 decl: {{store.resultDeclined}}<br>
                 awa: {{store.resultAwaiting}} -->
             </div>
-            <main-button :buttonText="'Save'" @click="$router.push('Myplan'), calculateConfirmed(), calculateDeclined(), calculateTotal(), calculateAwaiting()" > </main-button>
+            <main-button :buttonText="'Save'" @click="$router.push('Myplan'), calculateGuests()" > </main-button>
         </div>
     </body>
 </template>
@@ -89,19 +87,22 @@ export default {
             // this.store.confirmedGuests.splice(index,1)
             // this.store.declinedGuests.splice(index,1)
         },
-        calculateConfirmed(){           
-            this.store.resultConfirmed= this.store.confirmedGuests.length          
+        async calculateGuests () {
+            await Guests.calculateGuests(this.guests)
         },
-        calculateTotal(){        
-            this.store.resultTotalGuests= this.store.guests.length         
-        },
-        calculateDeclined(){            
-            this.store.resultDeclined = this.store.declinedGuests.length           
-        },
-        calculateAwaiting(){
-            this.store.resultAwaiting = this.store.resultTotalGuests - this.store.resultConfirmed - this.store.resultDeclined
+        // calculateConfirmed(){           
+        //     this.store.resultConfirmed= this.store.confirmedGuests.length          
+        // },
+        // calculateTotal(){        
+        //     this.store.resultTotalGuests= this.store.guests.length         
+        // },
+        // calculateDeclined(){            
+        //     this.store.resultDeclined = this.store.declinedGuests.length           
+        // },
+        // calculateAwaiting(){
+        //     this.store.resultAwaiting = this.store.resultTotalGuests - this.store.resultConfirmed - this.store.resultDeclined
 
-        }
+        // }
         // PROBLEM ON DELETION
     },
     data() {

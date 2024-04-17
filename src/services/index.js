@@ -85,7 +85,7 @@ let Details = {
                 location: details.location
             }
         })
-        console.log("updated: ", response.data)
+        console.log("Details updated: ", response.data)
 
         return true
         
@@ -99,7 +99,8 @@ let Expenses = {
 
         let response = await Service.patch(`/${user.username}/expenses`, {
             title: expense.title,
-            price: expense.price
+            price: expense.price,
+            paid: false
         })
         console.log("added: ", response.data)
     },
@@ -114,7 +115,8 @@ let Expenses = {
         let data = doc.map(element => {
             return {
                 title: element.data.title,
-                price: element.data.price
+                price: element.data.price,
+                paid: element.data.paid
             }
         })
         console.log(data)
@@ -126,6 +128,23 @@ let Expenses = {
 
         let response = await Service.patch(`/${user.username}/expenses/${title}`)
         console.log("deleted: ", response.data)
+    },
+    async calculateExpenses(expenses) {
+        let user = Auth.getUser()
+        let expensestotal = 0
+
+        for (var expense of expenses) {
+        
+            expensestotal += expense.price
+            console.log(expensestotal)
+        }
+
+        let response = await Service.patch(`/${user.username}`, {
+            "results.expensestotal": expensestotal,
+        })
+        console.log("Expenses calculated: ", response.data)
+
+        return true
     }
 }
 
@@ -160,6 +179,20 @@ let Guests = {
 
         let response = await Service.patch(`/${user.username}/guests/${name}`)
         console.log("deleted: ", response.data)
+    },
+    async calculateGuests(guests) {
+        let user = Auth.getUser()
+        let gueststotal = guests.length
+
+        console.log(gueststotal)
+
+        let response = await Service.patch(`/${user.username}`, {
+            "results.gueststotal": gueststotal,
+          
+        })
+        console.log("Guests calculated: ", response.data)
+
+        return true
     }
 }
 

@@ -30,6 +30,7 @@
                     :key="expense.title"
                     :title="expense.title"
                     :price="expense.price"
+                    :paid="expense.paid"
 
                     v-on:delete="deleteExpense(expense.title)"
                     >
@@ -41,7 +42,7 @@
                     </expense>
                 </ul>
             </div>
-            <main-button :buttonText="'Save'" @click="$router.push('Myplan'), calculatePaid(), calculateTotal(), calculateUnpaid()" > </main-button>
+            <main-button :buttonText="'Save'" @click="$router.push('Myplan'), calculateExpenses()" > </main-button>
         </div>
     </body>
 </template>
@@ -94,15 +95,18 @@ export default {
             // this.store.expenses.splice(index, 1)
             // this.store.checkedExpenses.splice(index, 1)
         },
-        calculatePaid(){           
-            this.store.resultPaid= this.store.checkedExpenses.reduce((total, expense) => total + expense.checkboxPrice, 0)           
+        async calculateExpenses () {
+            await Expenses.calculateExpenses(this.expenses)
         },
-        calculateTotal(){        
-            this.store.resultTotal= this.store.expenses.reduce((total, expense) => total + expense.price, 0)          
-        },
-        calculateUnpaid(){            
-            this.store.resultUnpaid = this.store.resultTotal - this.store.resultPaid            
-        }
+        // calculatePaid(){           
+        //     this.store.resultPaid= this.store.checkedExpenses.reduce((total, expense) => total + expense.checkboxPrice, 0)           
+        // },
+        // calculateTotal(){        
+        //     this.store.resultTotal= this.store.expenses.reduce((total, expense) => total + expense.price, 0)          
+        // },
+        // calculateUnpaid(){            
+        //     this.store.resultUnpaid = this.store.resultTotal - this.store.resultPaid            
+        // }
         // PROBLEM ON DELETION
     },
     data() {
