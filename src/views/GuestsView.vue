@@ -21,20 +21,19 @@
 
                     :key="guest.name"
                     :name="guest.name"
+                    :confirmed="guest.confirmed"
+                    :declined="guest.declined"
+
+                    @updateConfirmed="updateConfirmedStatus($event, guest)"
+                    @updateDeclined="updateDeclinedStatus($event, guest)"
                     
                     v-on:delete="deleteGuest(guest.name)" 
                     >
                      
                     </guest>
                 </ul>
-                <!-- conf: {{store.confirmedGuests}}<br>
-                decl: {{store.declinedGuests}}<br>
-                total: {{store.resultTotalGuests}}<br>
-                conf: {{store.resultConfirmed}}<br>
-                decl: {{store.resultDeclined}}<br>
-                awa: {{store.resultAwaiting}} -->
             </div>
-            <main-button :buttonText="'Save'" @click="$router.push('Myplan'), calculateGuests()" > </main-button>
+            <main-button :buttonText="'Save'" @click="onSave(), $router.push('Myplan')" > </main-button>
         </div>
     </body>
 </template>
@@ -87,8 +86,15 @@ export default {
             // this.store.confirmedGuests.splice(index,1)
             // this.store.declinedGuests.splice(index,1)
         },
-        async calculateGuests () {
+        async onSave () {
+            await Guests.updateGuests(this.guests)
             await Guests.calculateGuests(this.guests)
+        },
+        updateConfirmedStatus(newConfirmedStatus, guest) {
+            guest.confirmed = newConfirmedStatus
+        },
+        updateDeclinedStatus(newDeclinedStatus, guest) {
+            guest.declined = newDeclinedStatus
         },
         // calculateConfirmed(){           
         //     this.store.resultConfirmed= this.store.confirmedGuests.length          

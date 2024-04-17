@@ -31,6 +31,7 @@
                     :title="expense.title"
                     :price="expense.price"
                     :paid="expense.paid"
+                    
                     @updatePaid="updatePaidStatus($event, expense)"
 
 

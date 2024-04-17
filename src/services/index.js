@@ -174,7 +174,9 @@ let Guests = {
         let user = Auth.getUser()
 
         let response = await Service.patch(`/${user.username}/guests`, {
-            name: guest.name
+            name: guest.name,
+            confirmed: false,
+            declined: false
         })
         console.log("added: ", response.data)
     },
@@ -188,7 +190,9 @@ let Guests = {
 
         let data = doc.map(element => {
             return {
-                name: element.data.name
+                name: element.name,
+                confirmed: element.confirmed,
+                declined: element.declined
             }
         })
         console.log(data)
@@ -201,17 +205,39 @@ let Guests = {
         let response = await Service.patch(`/${user.username}/guests/${name}`)
         console.log("deleted: ", response.data)
     },
+    async updateGuests(guests) {
+        let user = Auth.getUser()
+        
+        let response = await Service.patch(`/${user.username}`, {
+            guests: guests
+        })
+
+        console.log("guests updated: ", response.data)
+    },
     async calculateGuests(guests) {
         let user = Auth.getUser()
         let gueststotal = guests.length
+        let guestsconfirmed = 0
+        let guestsdeclined = 0
+        let guestsawaiting = 0
 
-        console.log(gueststotal)
+        for (var guest of guests) {        
+            if (guest.confirmed) {
+                guestsconfirmed += 1
+            } else if (guest.declined) {
+                guestsdeclined += 1
+            } else {
+                guestsawaiting +=1
+            }
+        }
 
         let response = await Service.patch(`/${user.username}`, {
             "results.gueststotal": gueststotal,
-          
+            "results.guestsconfirmed" : guestsconfirmed,
+            "results.guestsdeclined": guestsdeclined,
+            "results.guestsawaiting": guestsawaiting
         })
-        console.log("Guests calculated: ", response.data)
+        console.log("Expenses calculated: ", response.data)
 
         return true
     }
