@@ -114,9 +114,9 @@ let Expenses = {
 
         let data = doc.map(element => {
             return {
-                title: element.data.title,
-                price: element.data.price,
-                paid: element.data.paid
+                title: element.title,
+                price: element.price,
+                paid: element.paid
             }
         })
         console.log(data)
@@ -129,18 +129,39 @@ let Expenses = {
         let response = await Service.patch(`/${user.username}/expenses/${title}`)
         console.log("deleted: ", response.data)
     },
+    async updateExpenses(expenses) {
+        let user = Auth.getUser()
+        
+        let response = await Service.patch(`/${user.username}`, {
+            expenses: expenses
+        })
+
+        console.log("expenses updated: ", response.data)
+    },
     async calculateExpenses(expenses) {
         let user = Auth.getUser()
         let expensestotal = 0
+        let expensespaid = 0
+        let expensesunpaid = 0
 
         for (var expense of expenses) {
         
             expensestotal += expense.price
             console.log(expensestotal)
+
+            if (expense.paid) {
+                console.log("hello")
+                console.log(expense.paid)
+                expensespaid += expense.price
+            } else {
+                expensesunpaid += expense.price
+            }
         }
 
         let response = await Service.patch(`/${user.username}`, {
             "results.expensestotal": expensestotal,
+            "results.expensespaid" : expensespaid,
+            "results.expensesunpaid": expensesunpaid
         })
         console.log("Expenses calculated: ", response.data)
 

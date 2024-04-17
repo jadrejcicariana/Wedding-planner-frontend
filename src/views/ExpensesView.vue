@@ -31,6 +31,8 @@
                     :title="expense.title"
                     :price="expense.price"
                     :paid="expense.paid"
+                    @updatePaid="updatePaidStatus($event, expense)"
+
 
                     v-on:delete="deleteExpense(expense.title)"
                     >
@@ -42,7 +44,7 @@
                     </expense>
                 </ul>
             </div>
-            <main-button :buttonText="'Save'" @click="$router.push('Myplan'), calculateExpenses()" > </main-button>
+            <main-button :buttonText="'Save'" @click="onSave(), $router.push('Myplan')" > </main-button>
         </div>
     </body>
 </template>
@@ -95,8 +97,12 @@ export default {
             // this.store.expenses.splice(index, 1)
             // this.store.checkedExpenses.splice(index, 1)
         },
-        async calculateExpenses () {
+        async onSave () {
+            await Expenses.updateExpenses(this.expenses)
             await Expenses.calculateExpenses(this.expenses)
+        },
+        updatePaidStatus(newPaidStatus, expense) {
+            expense.paid = newPaidStatus
         },
         // calculatePaid(){           
         //     this.store.resultPaid= this.store.checkedExpenses.reduce((total, expense) => total + expense.checkboxPrice, 0)           
