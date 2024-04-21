@@ -52,7 +52,6 @@ let Details = {
 
         let response = await Service.get(`/${user.username}`)
         let doc = response.data
-        console.log(doc)
         return {
             gname: doc.details.gname,
             bname: doc.details.bname,
@@ -103,7 +102,6 @@ let Expenses = {
 
         let response = await Service.get(`/${user.username}/expenses`)
         let doc = response.data
-        console.log(doc)
 
         let data = doc.map(element => {
             return {
@@ -139,11 +137,8 @@ let Expenses = {
         for (var expense of expenses) {
         
             expensestotal += expense.price
-            console.log(expensestotal)
 
             if (expense.paid) {
-                console.log("hello")
-                console.log(expense.paid)
                 expensespaid += expense.price
             } else {
                 expensesunpaid += expense.price
@@ -177,7 +172,6 @@ let Guests = {
 
         let response = await Service.get(`/${user.username}/guests`)
         let doc = response.data
-        console.log(doc)
 
         let data = doc.map(element => {
             return {
