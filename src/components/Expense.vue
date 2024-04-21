@@ -6,15 +6,13 @@
         <input type="checkbox" :id="title" v-model="paid" @change="updatePaidStatus" />
         <label for="checkbox">Paid</label>
         
-        <delete-button class="deletebutton" @delete="this.$emit('delete')"></delete-button>
-        
+        <delete-button class="deletebutton" @delete="this.$emit('delete')"></delete-button>      
     </li>
 </div>
 </template>
 
 <script>
 import DeleteButton from './DeleteButton.vue'
-import store from '@/store.js'
 
 export default {
     name: 'Expense',
@@ -24,24 +22,15 @@ export default {
         },
         price: {
             type: Number
-        },
-        // checkboxIndex: {
-        //     type: Number
-        // },
-        // checkboxPrice: {
-        //     type: Number
-        // }
-        
+        },       
     },
     methods: {
        updatePaidStatus() {
         this.$emit('updatePaid', this.paid)
-       }
-       
+       }    
     },
     data() {
         return {
-            store,
             paid: false
         }
     },
@@ -49,8 +38,6 @@ export default {
         DeleteButton
     }
 }
-
-
 </script>
 
 <style scoped>

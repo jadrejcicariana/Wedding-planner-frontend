@@ -15,9 +15,7 @@
 </template>
 
 <script>
-import store from '@/store.js'
 import DeleteButton from './DeleteButton.vue'
-
 
 export default {
     name: 'Guest',
@@ -25,7 +23,6 @@ export default {
         name: {
             type: String
         },
-
     },
     methods: {
        updateConfirmedStatus() {
@@ -40,15 +37,11 @@ export default {
     },
     data() {
         return {
-            store,
             confirmed: false,
-            declined: false
-             
+            declined: false       
         }
     },
 }
-
-
 </script>
 
 <style scoped>
@@ -62,5 +55,4 @@ input {
     margin-right: 100px;
     
 }
-
 </style>

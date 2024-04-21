@@ -43,7 +43,6 @@
 </template>
 
 <script>
-import store from '@/store.js'
 import MainHeader from '@/components/MainHeader.vue'
 import MainButton from '@/components/MainButton.vue'
 import { Details } from "@/services"
@@ -52,14 +51,11 @@ export default {
   name: 'MyplanView',
   data () {
     return {
-      store,
       details: {}
     }
   },
   async mounted() {
     this.details = await Details.fetchDetails()
-    
-    
   },
   components: {
     MainHeader,
@@ -68,7 +64,6 @@ export default {
   methods: {
   }
 }
-
 </script>
 
 

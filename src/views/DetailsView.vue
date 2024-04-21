@@ -22,7 +22,6 @@
 </template>
 
 <script>
-import store from '@/store.js'
 import MainHeader from '@/components/MainHeader.vue'
 import MainButton from '@/components/MainButton.vue'
 import { Details } from "@/services"
@@ -39,7 +38,6 @@ export default {
     },
     data() {
         return {
-            store,
             details: {}
         }
     },
@@ -47,7 +45,6 @@ export default {
         async updateDetails (){
             await Details.updateDetails(this.details)
             this.$router.push('Myplan')
-
         }
     }
 
@@ -71,5 +68,4 @@ input {
     border-radius: 16px;
 
 }
-
 </style>

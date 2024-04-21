@@ -45,7 +45,6 @@ import MainHeader from '@/components/MainHeader.vue'
 import MainButton from '@/components/MainButton.vue'
 import Guest from '@/components/Guest.vue'
 import AddButton from '@/components/AddButton.vue'
-import store from '@/store.js'
 import { Guests } from '@/services'
 
 export default {
@@ -97,24 +96,9 @@ export default {
         updateDeclinedStatus(newDeclinedStatus, guest) {
             guest.declined = newDeclinedStatus
         },
-        // calculateConfirmed(){           
-        //     this.store.resultConfirmed= this.store.confirmedGuests.length          
-        // },
-        // calculateTotal(){        
-        //     this.store.resultTotalGuests= this.store.guests.length         
-        // },
-        // calculateDeclined(){            
-        //     this.store.resultDeclined = this.store.declinedGuests.length           
-        // },
-        // calculateAwaiting(){
-        //     this.store.resultAwaiting = this.store.resultTotalGuests - this.store.resultConfirmed - this.store.resultDeclined
-
-        // }
-        // PROBLEM ON DELETION
     },
     data() {
         return {
-            store,
             guest: {},
             guests: [],
             nameToDelete: ""
@@ -122,8 +106,6 @@ export default {
         }
     }
 }
-
-
 </script>
 
 <style scoped>

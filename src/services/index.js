@@ -15,8 +15,6 @@ let Auth = {
 
         return true
     },
-
-
     async login(username, password){
         let response = await Service.post('/auth', {
             username: username,
@@ -27,13 +25,10 @@ let Auth = {
         localStorage.setItem("user", JSON.stringify(user))
 
         return true
-
     },
-
     logout() {
         localStorage.removeItem("user")
     },
-
     getUser() {
         return JSON.parse(localStorage.getItem("user"))
     },
@@ -88,8 +83,6 @@ let Details = {
         console.log("Details updated: ", response.data)
 
         return true
-        
-
     }
 }
 
@@ -120,8 +113,7 @@ let Expenses = {
             }
         })
         console.log(data)
-        return data
-     
+        return data 
     },
     async deleteExpense(title) {
         let user = Auth.getUser()
@@ -180,7 +172,6 @@ let Guests = {
         })
         console.log("added: ", response.data)
     },
-
     async fetchGuests() {
         let user = Auth.getUser()
 
@@ -197,7 +188,6 @@ let Guests = {
         })
         console.log(data)
         return data
-     
     },
     async deleteGuest(name) {
         let user = Auth.getUser()

@@ -38,7 +38,6 @@ export default {
     }
   }
 }
-
 </script>
 
 
@@ -69,7 +68,4 @@ div {
   position: absolute;
   right: 0;
 }
-
-
-
 </style>

@@ -27,7 +27,6 @@ export default {
     MainButton
   },
 };
-
 </script>
 
 <style scoped>

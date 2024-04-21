@@ -58,7 +58,6 @@ export default {
     },
   }
 }
-
 </script>
 
 <style scoped>
@@ -102,5 +101,4 @@ input {
     border-radius: 16px;
 
 }
-
 </style>
