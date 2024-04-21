@@ -33,7 +33,7 @@
                     </guest>
                 </ul>
             </div>
-            <main-button :buttonText="'Save'" @click="onSave(), $router.push('Myplan')" > </main-button>
+            <main-button :buttonText="'Save'" @click="onSave()" > </main-button>
         </div>
     </body>
 </template>
@@ -89,6 +89,7 @@ export default {
         async onSave () {
             await Guests.updateGuests(this.guests)
             await Guests.calculateGuests(this.guests)
+            this.$router.push('Myplan')
         },
         updateConfirmedStatus(newConfirmedStatus, guest) {
             guest.confirmed = newConfirmedStatus

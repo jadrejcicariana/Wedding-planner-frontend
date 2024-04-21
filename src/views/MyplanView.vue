@@ -58,6 +58,8 @@ export default {
   },
   async mounted() {
     this.details = await Details.fetchDetails()
+    
+    
   },
   components: {
     MainHeader,

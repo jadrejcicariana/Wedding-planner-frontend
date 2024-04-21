@@ -45,7 +45,7 @@
                     </expense>
                 </ul>
             </div>
-            <main-button :buttonText="'Save'" @click="onSave(), $router.push('Myplan')" > </main-button>
+            <main-button :buttonText="'Save'" @click="onSave()" > </main-button>
         </div>
     </body>
 </template>
@@ -101,6 +101,7 @@ export default {
         async onSave () {
             await Expenses.updateExpenses(this.expenses)
             await Expenses.calculateExpenses(this.expenses)
+            this.$router.push('Myplan')
         },
         updatePaidStatus(newPaidStatus, expense) {
             expense.paid = newPaidStatus

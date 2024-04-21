@@ -26,7 +26,6 @@ import store from '@/store.js'
 import MainHeader from '@/components/MainHeader.vue'
 import MainButton from '@/components/MainButton.vue'
 import { Details } from "@/services"
-import router from '@/router'
 
 export default {
 
@@ -47,7 +46,7 @@ export default {
     methods: {
         async updateDetails (){
             await Details.updateDetails(this.details)
-            router.push('Myplan')
+            this.$router.push('Myplan')
 
         }
     }
