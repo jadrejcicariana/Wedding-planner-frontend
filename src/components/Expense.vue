@@ -3,8 +3,8 @@
     <li>
         {{ title }}, {{ price }}
 
-        <input type="checkbox" :id="title" v-model="paid" @change="updatePaidStatus" />
-        <label for="checkbox">Paid</label>
+        <input type="checkbox" :id="title" v-model="compPaid" />
+        <label :for="title">Paid</label>
         
         <delete-button class="deletebutton" @delete="this.$emit('delete')"></delete-button>      
     </li>
@@ -22,16 +22,23 @@ export default {
         },
         price: {
             type: Number
-        },       
+        },
+        paid: {
+            type: Boolean
+        }       
     },
-    methods: {
-       updatePaidStatus() {
-        this.$emit('updatePaid', this.paid)
-       }    
+    computed: {
+        compPaid: {
+            get() {
+                return this.paid
+            },
+            set(val) {
+                this.$emit("updatePaid", val)
+            }
+        }
     },
     data() {
         return {
-            paid: false
         }
     },
     components: {
