@@ -3,11 +3,11 @@
     <li>
         <div class="name">{{ name }}</div>
 
-        <input type="checkbox" :id="name"  v-model="confirmed" @change="updateConfirmedStatus" />
-        <label for="checkbox">Confirmed</label>
+        <input type="checkbox" :id="name"  v-model="compConfirmed" />
+        <label :for="name">Confirmed</label>
 
-        <input type="checkbox" :id="name"  v-model="declined" @change="updateDeclinedStatus" />
-        <label for="checkbox">Declined</label>
+        <input type="checkbox" :id="name"  v-model="compDeclined" />
+        <label :for="name">Declined</label>
 
         <delete-button @delete="this.$emit('delete')"></delete-button>
     </li>
@@ -23,6 +23,12 @@ export default {
         name: {
             type: String
         },
+        confirmed: {
+            type: Boolean
+        },
+        declined: {
+            type: Boolean
+        }
     },
     methods: {
        updateConfirmedStatus() {
@@ -32,13 +38,35 @@ export default {
         this.$emit('updateDeclined', this.declined)
        },
     },
+    computed: {
+        compConfirmed: {
+            get() {
+                return this.confirmed
+            },
+            set(val) {
+                this.$emit("updateConfirmed", val)
+                if (val) {
+                    this.$emit("updateDeclined", !val)
+                } 
+            }
+        },
+        compDeclined: {
+            get() {
+                return this.declined
+            },
+            set(val) {
+                this.$emit("updateDeclined", val)
+                if (val) {
+                    this.$emit("updateConfirmed", !val)  
+                }
+            }
+        }
+    },
     components: {
         DeleteButton
     },
     data() {
-        return {
-            confirmed: false,
-            declined: false       
+        return {     
         }
     },
 }
