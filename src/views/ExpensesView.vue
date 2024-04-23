@@ -73,13 +73,13 @@ export default {
             this.titleToDelete = ""
             this.expenses = await Expenses.fetchExpenses()
         },
-        async onSave () {
-            await Expenses.updateExpenses(this.expenses)
+        async onSave () {    
             await Expenses.calculateExpenses(this.expenses)
             this.$router.push('Myplan')
         },
-        updatePaidStatus(newPaidStatus, expense) {
+        async updatePaidStatus(newPaidStatus, expense) {
             expense.paid = newPaidStatus
+            await Expenses.updateExpenses(this.expenses)
         },
     },
     data() {

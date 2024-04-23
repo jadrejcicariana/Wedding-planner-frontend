@@ -72,15 +72,16 @@ export default {
             this.guests = await Guests.fetchGuests()
         },
         async onSave () {
-            await Guests.updateGuests(this.guests)
             await Guests.calculateGuests(this.guests)
             this.$router.push('Myplan')
         },
-        updateConfirmedStatus(newConfirmedStatus, guest) {
+        async updateConfirmedStatus(newConfirmedStatus, guest) {
             guest.confirmed = newConfirmedStatus
+            await Guests.updateGuests(this.guests)
         },
-        updateDeclinedStatus(newDeclinedStatus, guest) {
+        async updateDeclinedStatus(newDeclinedStatus, guest) {
             guest.declined = newDeclinedStatus
+            await Guests.updateGuests(this.guests)
         },
     },
     data() {
