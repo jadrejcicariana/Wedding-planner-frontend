@@ -64,26 +64,12 @@ export default {
             await Guests.addGuest(this.guest)
             this.guest = {}
             this.guests = await Guests.fetchGuests()
-
-            // let newGuest = {
-            //     id: this.store.nextGuestId,
-            //     name: this.store.newGuestName,
-            // }
-            // this.store.guests.push(newGuest)
-            // this.store.newGuestName = ''
-            // this.store.nextGuestId++
         },
         async deleteGuest(nameToDelete) {
             this.nameToDelete = nameToDelete
             await Guests.deleteGuest(nameToDelete)
             this.nameToDelete = ""
             this.guests = await Guests.fetchGuests()
-
-
-            // console.log(index),
-            // this.store.guests.splice(index, 1)
-            // this.store.confirmedGuests.splice(index,1)
-            // this.store.declinedGuests.splice(index,1)
         },
         async onSave () {
             await Guests.updateGuests(this.guests)
