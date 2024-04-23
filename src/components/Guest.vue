@@ -30,14 +30,6 @@ export default {
             type: Boolean
         }
     },
-    methods: {
-       updateConfirmedStatus() {
-        this.$emit('updateConfirmed', this.confirmed)
-       },
-       updateDeclinedStatus() {
-        this.$emit('updateDeclined', this.declined)
-       },
-    },
     computed: {
         compConfirmed: {
             get() {
