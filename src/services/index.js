@@ -2,7 +2,7 @@ import axios from 'axios'
 
 let Service = axios.create({
     baseURL: 'https://wedding-planner-backend-1.onrender.com',
-    timeout: 1000
+    timeout: 5000
 })
 
 let Auth = {
